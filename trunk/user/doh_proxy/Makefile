@@ -11,14 +11,14 @@ all: config_test
 	$(MAKE) -j$(HOST_NCPU) -C $(SRC_NAME)/build
 
 download_test:
-	( if [ ! -f $(SRC_NAME).zip ]; then \
+	( if [ ! -f $(SRC_NAME).tar.gz ]; then \
 		wget -t5 --timeout=20 --no-check-certificate -O $(SRC_NAME).zip $(SRC_URL); \
 	fi )
 
 extract_test:
 	( if [ ! -d $(SRC_NAME) ]; then \
-		unzip -qq $(SRC_NAME).zip ; \
-	fi )
+ 		tar zxf $(SRC_NAME).tar.gz; \
+ 	fi )
 
 config_test:
 	( if [ -f ./config_done ]; then \
